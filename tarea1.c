@@ -35,6 +35,8 @@ int main(int argc, char const *argv[])
     printf("%d\n", isPower2(2));
     printf("%d\n", isPower2(-12));
     printf("%d\n", isPower2(-121));
+    printf("%d\n", -2147483648);
+    printf("%d\n", isPower2(-2147483648));
 
     return 0;
 }
@@ -99,5 +101,8 @@ int isPower2(int x)
     int x_menos_uno = x + menos_uno;
     int resultado_and = x & x_menos_uno;
     int no_es_cero = !!x;
-    return (!(resultado_and ^ 0)) & no_es_cero;
+
+    int signo = (x >> 31) & 1;
+    int es_positivo_o_cero = !signo; // Caso particular para que no se considere que -2147483648 (o 10000000000000000000000000000000) como potencia de 2
+    return (!(resultado_and ^ 0)) & no_es_cero & es_positivo_o_cero;
 }
