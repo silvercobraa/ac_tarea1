@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 
 int isZero(int x);
 int minusOne(void);
@@ -31,6 +32,21 @@ int main(int argc, char const *argv[])
     printf("isPositive %d: %d\n", -2, isPositive(-2));
     printf("isPositive %d: %d\n", -3, isPositive(-3));
     printf("%x\n", reverseBytes(0x01020304));
+    printf("%d\n", isGreater(0, 0));
+    printf("%d\n", isGreater(1, 2));
+    printf("%d\n", isGreater(3, 3));
+    printf("%d\n", isGreater(4, 1));
+    printf("%d\n", isGreater(-1, -2));
+    printf("%d\n", isGreater(-2, -1));
+    printf("%d\n", isGreater(4, -2));
+    printf("%d\n", isGreater(-4, 3));
+    printf("%d\n", isGreater(-1, -1));
+    printf("%d\n", isGreater(INT_MAX, INT_MAX));
+    printf("%d\n", isGreater(INT_MAX, INT_MIN)); // falla
+    printf("%d\n", isGreater(INT_MIN, INT_MAX));
+    printf("%d\n", isGreater(INT_MIN, INT_MIN)); // falla
+    printf("%d\n", isGreater(INT_MAX, INT_MAX - 1));
+    printf("%d\n", isGreater(INT_MIN + 1, INT_MIN));
     printf("%d\n", isPower2(5));
     printf("%d\n", isPower2(8));
     printf("%d\n", isPower2(0));
